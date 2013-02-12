@@ -1,0 +1,28 @@
+<h1>Events</h1>
+
+<%= link_to 'Add a New Event', new_event_path %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Happening on</th>
+    <th>Venue</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tbody>
+<% @events.each do |event| %>
+  <tr>
+    <td><%= link_to event.title, event %></td>
+    <td><%= event.datetime.strftime("%B %d at %I:%M %p") %></td>
+    <td><%= link_to event.venue.name, event.venue %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
